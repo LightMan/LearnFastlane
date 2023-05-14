@@ -20,12 +20,23 @@ platform :ios do
     setup_circle_ci
   end
   
+  desc "Lint"
+  lane :lint do
+    swiftlint(
+      mode: :lint,                            # SwiftLint mode: :lint (default) or :autocorrect
+      executable: "swiftlint",                # The SwiftLint binary path (optional). Important if you've installed it via CocoaPods
+      config_file: ".swiftlint.yml",          # The path of the configuration file (optional)
+      ignore_exit_status: true,               # Allow fastlane to continue even if SwiftLint returns a non-zero exit status (Default: false)
+      quiet: false,                           # Don't print status logs like 'Linting ' & 'Done linting' (Default: false)
+      strict: true                            # Fail on warnings? (Default: false)
+    )
+  end
+
   desc "Run tests"
   lane :test_iOS do
     run_tests(scheme: "LearnFastlane (iOS)",
       devices: ["iPhone 13 Pro", "iPad mini (6th generation)"]
-    )
-    
+    )    
   end
 
 end
