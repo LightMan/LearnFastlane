@@ -26,8 +26,6 @@ platform :ios do
       mode: :lint,                            # SwiftLint mode: :lint (default) or :autocorrect
       executable: "swiftlint",                # The SwiftLint binary path (optional). Important if you've installed it via CocoaPods
       config_file: ".swiftlint.yml",          # The path of the configuration file (optional)
-      ignore_exit_status: true,               # Allow fastlane to continue even if SwiftLint returns a non-zero exit status (Default: false)
-      quiet: false,                           # Don't print status logs like 'Linting ' & 'Done linting' (Default: false)
       strict: true                            # Fail on warnings? (Default: false)
     )
   end
