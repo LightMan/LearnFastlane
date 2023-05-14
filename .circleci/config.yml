@@ -1,6 +1,20 @@
 # .circleci/config.yml
 version: 2.1
 jobs:
+  swiftlint:
+    docker:
+      - image: dantoml/swiftlint:latest
+        auth:
+          username: mydockerhub-user
+          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    steps:
+      - checkout
+      - run: swiftlint lint --reporter junit | tee result.xml
+      - store_artifacts:
+          path: result.xml
+      - store_test_results:
+          path: result.xml
+  
   build-and-test:
     macos:
       xcode: 13.4.1
@@ -36,6 +50,7 @@ jobs:
 workflows:
   build-and-test:
     jobs:
+      - swiftlint
       - build-and-test
       # - adhoc:
       #     filters:

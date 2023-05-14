@@ -23,7 +23,7 @@ platform :ios do
   desc "Run tests"
   lane :test_iOS do
     run_tests(scheme: "LearnFastlane (iOS)",
-      devices: ["iPhone 13 Pro", "iPad Mini (6th Generation)"]
+      devices: ["iPhone 13 Pro", "iPad mini (6th generation)"]
     )
     
   end
