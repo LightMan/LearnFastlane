@@ -12,7 +12,7 @@ jobs:
       - run: bundle install
       - run:
           name: Fastlane
-          command: bundle exec fastlane custom_lane # $FASTLANE_LANE
+          command: bundle exec fastlane test_iOS # $FASTLANE_LANE
       - store_artifacts:
           path: output
       - store_test_results:
@@ -34,7 +34,7 @@ jobs:
   #         path: output
 
 workflows:
-  build-test-adhoc:
+  build-and-test:
     jobs:
       - build-and-test
       # - adhoc:
